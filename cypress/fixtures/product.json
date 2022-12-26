@@ -1,5 +1,6 @@
 {
   "productName": "iPhone",
+  "quantity": 1,
   "product_id": 40,
   "price": 123.2,
   "slug": "product&product_id=40"

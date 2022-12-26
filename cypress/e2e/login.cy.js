@@ -7,7 +7,6 @@ describe('test login functionality', () => {
     cy.visit(`/${link.login}`)
 
     fillLoginForm(user)
-
     cy.get(loginLocators.login).click()
     cy.url().should('contain', 'account/account')
   })
