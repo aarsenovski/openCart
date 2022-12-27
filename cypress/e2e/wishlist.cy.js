@@ -19,7 +19,6 @@ describe('test wishlist functionality', () => {
     cy.visit(`/${link.login}`)
     fillLoginForm(user)
     cy.get(loginLocators.login).click()
-    cy.url().should('contain', 'account/account')
 
     cy.visit(`index.php?route=product/${product.slug}`)
     cy.get(productPagelocators.addToWishlist).click()
@@ -32,6 +31,7 @@ describe('test wishlist functionality', () => {
     cy.visit(`/${link.login}`)
     fillLoginForm(user)
     cy.get(loginLocators.login).click()
+
     cy._addProductToWishlist(40)
     cy.visit(link.wishlist)
     cy.get(wishListLocators.removeButton).first().click({ force: true })

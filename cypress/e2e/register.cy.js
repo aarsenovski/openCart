@@ -1,6 +1,4 @@
 import { registerPageLocators, registerFillForm } from '../pages/register'
-// const user = require("../fixtures/user.json");
-//import { user } from "../fixtures/user"; - this is when it's js
 import { link } from '../pages/link'
 
 describe('test register functionality', () => {

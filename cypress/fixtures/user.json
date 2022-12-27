@@ -4,5 +4,8 @@
   "email": "cypress-test@mailinator.com",
   "phone": "+1 (449) 177-6324",
   "password": "qkn@wdc4BKG9gjg4qgf",
-  "passwordConfirm": "qkn@wdc4BKG9gjg4qgf"
+  "passwordConfirm": "qkn@wdc4BKG9gjg4qgf",
+  "company": "Some company",
+  "address": "Some address",
+  "city": "Some city"
 }
