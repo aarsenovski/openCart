@@ -13,6 +13,7 @@ export const checkoutLocators = {
   paymentMehodContinue: '[id="button-payment-method"]',
   checkbox: '[name="agree"]',
   confirmOrder: '[id="button-confirm"]',
+  billingaddress: '[name="address_id"]',
 }
 
 export const fillCheckoutForm = (user) => {

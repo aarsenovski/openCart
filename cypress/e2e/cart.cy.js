@@ -8,6 +8,7 @@ describe('test login functionality', () => {
       'addProductToCart',
     )
   })
+
   it('should add a product to cart', () => {
     cy.visit('/')
 
@@ -25,6 +26,7 @@ describe('test login functionality', () => {
       )
     })
   })
+
   it('should delete a product from cart', () => {
     cy._addProductToCart(1, 40)
     cy.visit(link.cartPage)

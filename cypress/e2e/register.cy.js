@@ -5,7 +5,7 @@ describe('test register functionality', () => {
   it('should register a new user', () => {
     cy.visit(`/${link.register}`)
 
-    cy.fixture('user').then((user) => {
+    cy.fixture('userRegister').then((user) => {
       const newUser = {
         ...user,
         email: `cypress-test${Date.now()}@test.com`,

@@ -1,6 +1,6 @@
 import product from '../fixtures/product.json'
 import { link } from '../pages/link'
-import user from '../fixtures/user.json'
+import user from '../fixtures/userRegister.json'
 import { fillLoginForm } from '../pages/login'
 import { productPagelocators } from '../pages/productPage'
 import { loginLocators } from '../pages/login'

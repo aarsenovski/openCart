@@ -1,11 +1,12 @@
 import { link } from '../pages/link'
 import { fillLoginForm } from '../pages/login'
-import user from '../fixtures/user.json'
+import userRegister from '../fixtures/userRegister.json'
 import { loginLocators } from '../pages/login'
 import { checkoutLocators } from '../pages/checkout'
 import { fillCheckoutForm } from '../pages/checkout'
 import { registerFillForm } from '../pages/register'
 import { registerPageLocators } from '../pages/register'
+import userAddress from '../fixtures/userAddress.json'
 
 describe('test checkout functionality', () => {
   beforeEach(() => {
@@ -29,12 +30,13 @@ describe('test checkout functionality', () => {
       'index.php?route=extension/payment/bank_transfer/confirm',
     ).as('confirmTransfer')
   })
+
   it('should make a successful order', () => {
     cy.visit(`/${link.register}`)
 
-    cy.fixture('user').then((user) => {
+    cy.fixture('userRegister').then((user) => {
       const newUser = {
-        ...user,
+        ...userRegister,
         email: `cypress-test${Date.now()}@test.com`,
       }
       registerFillForm(newUser)
@@ -45,7 +47,7 @@ describe('test checkout functionality', () => {
     cy._addProductToCart(1, 40)
     cy.visit(link.cartPage)
     cy.contains('Checkout').click()
-    fillCheckoutForm(user)
+    fillCheckoutForm(userRegister)
     cy.get(checkoutLocators.country).select(2)
     cy.get(checkoutLocators.region).select(2)
     cy.get(checkoutLocators.billingDetailsContinue).click()
@@ -72,5 +74,32 @@ describe('test checkout functionality', () => {
     })
     cy.get('h1').should('contain', 'Your order has been placed!')
     cy.url().should('contain', 'index.php?route=checkout/success')
+  })
+
+  it('should successfully complete - billing details via API', () => {
+    cy.visit(`/${link.register}`)
+
+    cy.fixture('userRegister').then((user) => {
+      const newUser = {
+        ...userRegister,
+        email: `cypress-test${Date.now()}@test.com`,
+      }
+      registerFillForm(newUser)
+    })
+    cy.get(registerPageLocators.policyTickBox).click()
+    cy.contains('Continue').click()
+
+    cy._addProductToCart(1, 41).then((res) => {
+      console.log(res)
+    })
+    cy._paymentAddress()
+    cy._addBillingDetails(userAddress)
+    cy.visit(link.checkoutPage)
+    cy.contains('I want to use an existing address')
+    cy.get(checkoutLocators.billingaddress).should(
+      'contain',
+      userAddress.address_1,
+    )
+    //cy.get(checkoutLocators.billingDetailsContinue).click()
   })
 })
