@@ -1,4 +1,14 @@
-{
-  "quantity": "quantity",
-  "product_id": "product_id"
-}
+[
+  {
+    "name": "firstCompany",
+    "nr": 222
+  },
+  {
+    "name": "firstCompany",
+    "nr": 222
+  },
+  {
+    "name": "firstCompany",
+    "nr": 222
+  }
+]

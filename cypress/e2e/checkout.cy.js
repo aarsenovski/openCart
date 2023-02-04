@@ -102,4 +102,28 @@ describe('test checkout functionality', () => {
     )
     //cy.get(checkoutLocators.billingDetailsContinue).click()
   })
+
+  it('should successfully complete - delivery method and details via API', () => {
+    cy.visit(`/${link.register}`)
+
+    cy.fixture('userRegister').then((user) => {
+      const newUser = {
+        ...userRegister,
+        email: `cypress-test${Date.now()}@test.com`,
+      }
+      registerFillForm(newUser)
+    })
+    cy.get(registerPageLocators.policyTickBox).click()
+    cy.contains('Continue').click()
+
+    cy._addProductToCart(1, 41).then((res) => {
+      console.log(res)
+    })
+    cy._paymentAddress()
+    cy._addBillingDetails(userAddress)
+    cy.visit(link.checkoutPage)
+    cy.get(checkoutLocators.billingDetailsContinue).click()
+    cy._addDeliveryDetails()
+    cy.get(checkoutLocators.billingDetailsContinue).click()
+  })
 })
