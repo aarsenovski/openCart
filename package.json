@@ -1,0 +1,10 @@
+{
+  "name": "openCart",
+  "version": "1.0.0",
+  "description": "openCart Cypress project",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "cypress": "^12.1.0"
+  }
+}
