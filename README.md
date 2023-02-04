@@ -2,7 +2,9 @@
 
 \*\*Version 1.0.0
 
-This repo consists of example of a suite of test cases regarding various actions a user can perform on the website. It tries to implement several best practices according to Cypress documentation about organizing tests, selecting elements, as well as setting up and controlling state of the application. Page Object Model (POM) pattern is used which creates an object repository for storing all web elements locators. Tests included in this repo tend to cover real user scenario and generally cover 3 phases:
+This repo consists of example of a suite of test cases regarding various actions a user can perform on the website. It tries to implement several best practices according to Cypress documentation about organizing tests, selecting elements, as well as setting up and controlling state of the application.
+
+Page Object Model (POM) pattern is used to create an object repository for storing all web elements locators per page. Tests included in this repo tend to cover real user scenarios and generally cover 3 phases:
 
 1. Set up the application state.
 
@@ -10,42 +12,65 @@ This repo consists of example of a suite of test cases regarding various actions
 
 3. Make an assertion about the resulting application state.
 
+Results from the tests can be easily observed using the configured Mochawesome reporter for Cypress.
+
 ## :gear: Setup
 
-1. 'git clone https://github.com/aarsenovski/openCart'
-2. run 'npm install'
+1. Clone the repo:
+
+   ```
+   git clone https://github.com/aarsenovski/openCart
+   ```
+
+2. Install project dependencies:
+   ```
+   yarn install
+   ```
 
 ---
 
 ## :bulb: Information
 
-#### :test_tube: Tests:
+#### :test_tube: Configuration:
 
 :file_folder: Tests are located in `cypress/e2e` folder
 
+:file_folder: Fixtures (test data) are located in `cypress/fixtures` folder
+
 :file_folder: Custom commands are located in `cypress/support` folder
 
-:file_folder: Selectors (CSS selectors) are located in `cypress/pages` folder
+:file_folder: Selectors (Page object patterns) are located in `cypress/pages` folder
 
----
+:page_facing_up: Main config file where default behavior of Cypress can be modified. -`cypress.config.js` file
 
 #### :test_tube: Run tests:
 
-run tests in headless mode:
+- run tests in headless mode:
 
-`yarn cypress run`
+```
+yarn cypress run
+```
 
-#### :hammer_and_wrench: Configuration
+- run tests within Cypress Launchpad:
 
-Config files:
+```
+yarn cypress open
+```
 
-1. `cypress.config.js` - Main config file where default behavior of Cypress can be modified. [More info](https://docs.cypress.io/guides/references/configuration)
-2. `plugins/index.js` - Plugins file is where we can programmatically alter the resolved configuration
+- see available options and help:
+
+```
+yarn cypress --help
+```
 
 ## Contributor
 
-- Andrej Arsenovski <andrejarsenovski@gmail.com>
+- Andrej Arsenovski - <andrejarsenovski@gmail.com> - 2023
 
 ---
 
-##License and copyright
+## License and copyright
+
+```
+
+```
