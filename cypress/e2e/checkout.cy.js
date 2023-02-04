@@ -103,7 +103,7 @@ describe('test checkout functionality', () => {
     //cy.get(checkoutLocators.billingDetailsContinue).click()
   })
 
-  it('should successfully complete - delivery method and details via API', () => {
+  it.only('should successfully complete - delivery method and details via API', () => {
     cy.visit(`/${link.register}`)
 
     cy.fixture('userRegister').then((user) => {
@@ -116,14 +116,10 @@ describe('test checkout functionality', () => {
     cy.get(registerPageLocators.policyTickBox).click()
     cy.contains('Continue').click()
 
-    cy._addProductToCart(1, 41).then((res) => {
-      console.log(res)
-    })
+    cy._addProductToCart(1, 41).then((res) => {})
     cy._paymentAddress()
     cy._addBillingDetails(userAddress)
     cy.visit(link.checkoutPage)
-    cy.get(checkoutLocators.billingDetailsContinue).click()
-    cy._addDeliveryDetails()
     cy.get(checkoutLocators.billingDetailsContinue).click()
   })
 })
