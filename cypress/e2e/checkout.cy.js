@@ -1,7 +1,5 @@
 import { link } from '../pages/link'
-import { fillLoginForm } from '../pages/login'
 import userRegister from '../fixtures/userRegister.json'
-import { loginLocators } from '../pages/login'
 import { checkoutLocators } from '../pages/checkout'
 import { fillCheckoutForm } from '../pages/checkout'
 import { registerFillForm } from '../pages/register'

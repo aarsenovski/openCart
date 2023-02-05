@@ -1,10 +1,9 @@
 import product from '../fixtures/product.json'
 import { link } from '../pages/link'
 import user from '../fixtures/userRegister.json'
-import { fillLoginForm } from '../pages/login'
 import { productPagelocators } from '../pages/productPage'
-import { loginLocators } from '../pages/login'
 import { wishListLocators } from '../pages/wishlist'
+import loginPage from '../pages/login'
 
 describe('test wishlist functionality', () => {
   beforeEach(() => {
@@ -16,9 +15,7 @@ describe('test wishlist functionality', () => {
     )
   })
   it('should add a product to wishlist', () => {
-    cy.visit(`/${link.login}`)
-    fillLoginForm(user)
-    cy.get(loginLocators.login).click()
+    loginPage.login(user)
 
     cy.visit(`index.php?route=product/${product.slug}`)
     cy.get(productPagelocators.addToWishlist).click()
@@ -28,9 +25,7 @@ describe('test wishlist functionality', () => {
     })
   })
   it('should delete a product from wishlist', () => {
-    cy.visit(`/${link.login}`)
-    fillLoginForm(user)
-    cy.get(loginLocators.login).click()
+    loginPage.login(user)
 
     cy._addProductToWishlist(40)
     cy.visit(link.wishlist)

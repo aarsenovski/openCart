@@ -5,4 +5,5 @@ export const link = {
   cartPage: '/index.php?route=checkout/cart',
   wishlist: '/index.php?route=account/wishlist',
   checkoutPage: 'index.php?route=checkout/checkout',
+  signedAccount: 'index.php?route=account/account',
 }
