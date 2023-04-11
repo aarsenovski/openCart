@@ -12,9 +12,12 @@ export const login = (user) => {
     [user.firstName, user.password],
     () => {
       cy.visit(`/${link.login}`)
+
       cy.get(loginLocators.email).type(user.email)
       cy.get(loginLocators.password).type(user.password)
       cy.get(loginLocators.login).click()
+
+      cy.url().should('contain', '/index.php?route=account/account')
     },
     {
       validate() {
