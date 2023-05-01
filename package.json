@@ -5,7 +5,9 @@
   "main": "index.js",
   "license": "MIT",
   "devDependencies": {
+    "@bahmutov/cypress-esbuild-preprocessor": "^2.2.0",
     "cypress": "^12.11.0",
-    "cypress-mochawesome-reporter": "^3.2.3"
+    "cypress-mochawesome-reporter": "^3.2.3",
+    "esbuild": "^0.17.18"
   }
 }
