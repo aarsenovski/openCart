@@ -1,0 +1,17 @@
+name: run e2e Cypress tests
+on: pull_request
+
+jobs:
+  cypress-e2e-tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: checkout code
+        uses: actions/checkout@v3
+
+      - name: install dependencies
+        run: yarn install
+
+      - name: run e2e tests
+        run: |
+          npx cypress run
