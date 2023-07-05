@@ -1,4 +1,4 @@
-export const checkoutLocators = {
+const locators = {
   firstName: '[name="firstname"]',
   lastName: '[name="lastname"]',
   company: '[name="company"]',
@@ -16,10 +16,15 @@ export const checkoutLocators = {
   billingaddress: '[name="address_id"]',
 }
 
-export const fillCheckoutForm = (user) => {
+const fillCheckoutForm = (user) => {
   cy.get(checkoutLocators.firstName).type(user.firstName)
   cy.get(checkoutLocators.lastName).type(user.lastName)
   cy.get(checkoutLocators.company).type(user.company)
   cy.get(checkoutLocators.address).type(user.address)
   cy.get(checkoutLocators.city).type(user.city)
+}
+
+export const checkoutPage = {
+  locators,
+  fillCheckoutForm,
 }

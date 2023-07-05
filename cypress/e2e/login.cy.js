@@ -1,5 +1,5 @@
 import user from '../fixtures/userRegister.json'
-import loginPage from '../pages/login'
+import { loginPage } from '../pages/loginPage'
 
 describe('test login functionality', () => {
   it('should login an existing user', () => {

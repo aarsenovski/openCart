@@ -1,9 +1,9 @@
 import product from '../fixtures/product.json'
 import user from '../fixtures/userRegister.json'
-import { link } from '../pages/link'
-import loginPage from '../pages/login'
-import { productPagelocators } from '../pages/productPage'
-import { wishListLocators } from '../pages/wishlist'
+import { linkPage } from '../pages/linkPage'
+import { loginPage } from '../pages/loginPage'
+import { productPage } from '../pages/productPage'
+import { wishListPage } from '../pages/wishlistPage'
 
 describe('test productDetailPage functionality', () => {
   beforeEach(() => {
@@ -18,7 +18,7 @@ describe('test productDetailPage functionality', () => {
     loginPage.login(user)
 
     cy.visit(`index.php?route=product/${product.slug}`)
-    cy.get(productPagelocators.addToWishlist).click()
+    cy.get(productPage.locators.addToWishlist).click()
     cy.wait('@addToWishlist').then((res) => {
       expect(res.response.body.total).to.contain('Wish List')
       expect(res.response.statusCode).to.eq(200)
@@ -28,8 +28,8 @@ describe('test productDetailPage functionality', () => {
     loginPage.login(user)
 
     cy._addProductToWishlist(40)
-    cy.visit(link.wishlist)
-    cy.get(wishListLocators.removeButton).first().click({ force: true })
+    cy.visit(linkPage.locators.wishlist)
+    cy.get(wishListPage.locators.removeButton).first().click({ force: true })
     cy.wait('@removeFromWishlist').then((res) => {
       expect(res.response.statusCode).to.eq(200)
     })

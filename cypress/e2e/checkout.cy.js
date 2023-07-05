@@ -1,8 +1,8 @@
 import userAddress from '../fixtures/userAddress.json'
 import userRegister from '../fixtures/userRegister.json'
-import { checkoutLocators, fillCheckoutForm } from '../pages/checkout'
-import { link } from '../pages/link'
-import { registerFillForm, registerPageLocators } from '../pages/register'
+import { checkoutPage } from '../pages/checkoutPage'
+import { linkPage } from '../pages/linkPage'
+import { registerPage } from '../pages/registerPage'
 
 describe('test checkout functionality', () => {
   beforeEach(() => {
@@ -28,43 +28,43 @@ describe('test checkout functionality', () => {
   })
 
   it.skip('should make a successful order', () => {
-    cy.visit(`/${link.register}`)
+    cy.visit(`/${linkPage.locators.register}`)
 
     cy.fixture('userRegister').then((user) => {
       const newUser = {
         ...userRegister,
         email: `cypress-test${Date.now()}@test.com`,
       }
-      registerFillForm(newUser)
+      registerPage.registerFillForm(newUser)
     })
-    cy.get(registerPageLocators.policyTickBox).click()
+    cy.get(registerPage.locators.policyTickBox).click()
     cy.contains('Continue').click()
 
     cy._addProductToCart(1, 40)
-    cy.visit(link.cartPage)
+    cy.visit(linkPage.locators.cartPage)
     cy.contains('Checkout').click()
     fillCheckoutForm(userRegister)
-    cy.get(checkoutLocators.country).select(2)
-    cy.get(checkoutLocators.region).select(2)
-    cy.get(checkoutLocators.billingDetailsContinue).click()
+    cy.get(checkoutPage.locators.country).select(2)
+    cy.get(checkoutPage.locators.region).select(2)
+    cy.get(checkoutPage.locators.billingDetailsContinue).click()
     cy.wait('@billingDetails').then((res) => {
       expect(res.response.statusCode).to.eq(200)
     })
-    cy.get(checkoutLocators.deliveryDetailsContinue).click()
+    cy.get(checkoutPage.locators.deliveryDetailsContinue).click()
     cy.wait('@deliveryDetails').then((res) => {
       expect(res.response.statusCode).to.eq(200)
     })
-    cy.get(checkoutLocators.commentField).type('this is a comment2')
-    cy.get(checkoutLocators.deliveryMethodContinue).click()
+    cy.get(checkoutPage.locators.commentField).type('this is a comment2')
+    cy.get(checkoutPage.locators.deliveryMethodContinue).click()
     cy.wait('@deliveryMethod').then((res) => {
       expect(res.response.statusCode).to.eq(200)
     })
-    cy.get(checkoutLocators.checkbox).click()
-    cy.get(checkoutLocators.paymentMehodContinue).click()
+    cy.get(checkoutPage.locators.checkbox).click()
+    cy.get(checkoutPage.locators.paymentMehodContinue).click()
     cy.wait('@paymentMethod').then((res) => {
       expect(res.response.statusCode).to.eq(200)
     })
-    cy.get(checkoutLocators.confirmOrder).click()
+    cy.get(checkoutPage.locators.confirmOrder).click()
     cy.wait('@confirmTransfer').then((res) => {
       expect(res.response.statusCode).to.eq(200)
     })
@@ -73,16 +73,16 @@ describe('test checkout functionality', () => {
   })
 
   it('should successfully complete - billing details via API', () => {
-    cy.visit(`/${link.register}`)
+    cy.visit(`/${linkPage.locators.register}`)
 
     cy.fixture('userRegister').then((user) => {
       const newUser = {
         ...userRegister,
         email: `cypress-test${Date.now()}@test.com`,
       }
-      registerFillForm(newUser)
+      registerPage.registerFillForm(newUser)
     })
-    cy.get(registerPageLocators.policyTickBox).click()
+    cy.get(registerPage.locators.policyTickBox).click()
     cy.contains('Continue').click()
 
     cy._addProductToCart(1, 41).then((res) => {
@@ -90,12 +90,12 @@ describe('test checkout functionality', () => {
     })
     cy._paymentAddress()
     cy._addBillingDetails(userAddress)
-    cy.visit(link.checkoutPage)
+    cy.visit(linkPage.locators.checkoutPage)
     cy.contains('I want to use an existing address')
-    cy.get(checkoutLocators.billingaddress).should(
+    cy.get(checkoutPage.locators.billingaddress).should(
       'contain',
       userAddress.address_1,
     )
-    cy.get(checkoutLocators.billingDetailsContinue).click()
+    cy.get(checkoutPage.locators.billingDetailsContinue).click()
   })
 })
