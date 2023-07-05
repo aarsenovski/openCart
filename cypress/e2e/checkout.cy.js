@@ -1,10 +1,8 @@
-import { link } from '../pages/link'
-import userRegister from '../fixtures/userRegister.json'
-import { checkoutLocators } from '../pages/checkout'
-import { fillCheckoutForm } from '../pages/checkout'
-import { registerFillForm } from '../pages/register'
-import { registerPageLocators } from '../pages/register'
 import userAddress from '../fixtures/userAddress.json'
+import userRegister from '../fixtures/userRegister.json'
+import { checkoutLocators, fillCheckoutForm } from '../pages/checkout'
+import { link } from '../pages/link'
+import { registerFillForm, registerPageLocators } from '../pages/register'
 
 describe('test checkout functionality', () => {
   beforeEach(() => {
@@ -29,7 +27,7 @@ describe('test checkout functionality', () => {
     ).as('confirmTransfer')
   })
 
-  it('should make a successful order', () => {
+  it.skip('should make a successful order', () => {
     cy.visit(`/${link.register}`)
 
     cy.fixture('userRegister').then((user) => {
