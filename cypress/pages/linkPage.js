@@ -1,4 +1,4 @@
-export const link = {
+const locators = {
   register: 'index.php?route=account/register',
   login: '/index.php?route=account/login',
   homePage: '/',
@@ -6,4 +6,8 @@ export const link = {
   wishlist: '/index.php?route=account/wishlist',
   checkoutPage: 'index.php?route=checkout/checkout',
   signedAccount: 'index.php?route=account/account',
+}
+
+export const linkPage = {
+  locators,
 }
