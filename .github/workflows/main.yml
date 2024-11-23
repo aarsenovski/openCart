@@ -1,5 +1,8 @@
 name: run e2e Cypress tests
-on: pull_request
+
+on:
+  pull_request:
+  workflow_dispatch:
 
 jobs:
   cypress-e2e-tests:
