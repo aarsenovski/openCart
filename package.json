@@ -9,5 +9,8 @@
     "cypress": "^12.11.0",
     "cypress-mochawesome-reporter": "^3.2.3",
     "esbuild": "^0.17.18"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5"
   }
 }
