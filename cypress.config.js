@@ -1,5 +1,6 @@
 const { defineConfig } = require('cypress')
 const createBundler = require('@bahmutov/cypress-esbuild-preprocessor')
+require('dotenv').config()
 
 module.exports = defineConfig({
   chromeWebSecurity: false,
@@ -9,9 +10,10 @@ module.exports = defineConfig({
     setupNodeEvents(on, config) {
       on('file:preprocessor', createBundler())
       require('cypress-mochawesome-reporter/plugin')(on)
-    },
 
-    baseUrl: 'http://opencart.abstracta.us/',
-    defaultCommandTimeout: 5000,
+      config.baseUrl = process.env.CYPRESS_BASE_URL
+      return config
+    },
+    defaultCommandTimeout: 4000,
   },
 })

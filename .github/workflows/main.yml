@@ -17,4 +17,5 @@ jobs:
 
       - name: run e2e tests
         run: |
+
           npx cypress run
