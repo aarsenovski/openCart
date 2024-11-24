@@ -24,7 +24,7 @@ Results from the tests can be easily observed using the configured Mochawesome r
 
 2. Install project dependencies:
    ```
-   yarn install
+   npm install
    ```
 
 ---
@@ -48,19 +48,19 @@ Results from the tests can be easily observed using the configured Mochawesome r
 - run tests in headless mode:
 
 ```
-yarn cypress run
+npm cypress run
 ```
 
 - run tests within Cypress Launchpad:
 
 ```
-yarn cypress open
+npm cypress open
 ```
 
 - see available options and help:
 
 ```
-yarn cypress --help
+npm cypress --help
 ```
 
 ## Contributor
